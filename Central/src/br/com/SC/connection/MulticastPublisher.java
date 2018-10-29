@@ -12,7 +12,7 @@ import java.net.InetAddress;
 
 /**
  *
- * @author kkaro
+ * @author karolyne
  */
 
 public class MulticastPublisher {

@@ -6,7 +6,8 @@
             <file>file:/C:/Users/kkaro/Desktop/UEFS/MI%20REDES/PBL-1/Central/src/br/com/SC/connection/ServerUDP.java</file>
             <file>file:/C:/Users/kkaro/Desktop/UEFS/MI%20REDES/PBL-1/Central/src/br/com/SC/connection/MulticastPublisher.java</file>
             <file>file:/C:/Users/kkaro/Desktop/UEFS/MI%20REDES/PBL-1/Central/src/br/com/SC/controller/Controller.java</file>
-            <file>file:/C:/Users/kkaro/Desktop/UEFS/MI%20REDES/PBL-1/Central/src/br/com/SC/connection/MulticastReceiver.java</file>
+            <file>file:/C:/Users/kkaro/Desktop/UEFS/MI%20REDES/PBL-1/Central/src/br/com/SC/connection/AtividadeServidor.java</file>
+            <file>file:/C:/Users/kkaro/Desktop/UEFS/MI%20REDES/PBL-1/Central/src/br/com/SC/connection/ServerTCP.java</file>
         </group>
     </open-files>
 </project-private>

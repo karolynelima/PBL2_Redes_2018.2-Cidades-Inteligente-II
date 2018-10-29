@@ -23,8 +23,8 @@ public class ServerUDP implements Runnable{
     private final DatagramSocket servidor; //atributo responsável por estabelecer a conexão UDP
     private byte[] recebe = new byte[2048];//Array para receber a informação da conexão
     private final Controller ctrl; //Atributo que recebe o controlador
-    private MulticastPublisher multEnviar;
-    private MulticastReceiver multReceber;           
+    //private MulticastPublisher multEnviar;
+    //private MulticastReceiver multReceber;     
             
             
     //Construtor 
@@ -32,11 +32,11 @@ public class ServerUDP implements Runnable{
         servidor = new DatagramSocket(porta);//Abre uma coneão UDP para uma determinada porta
         this.ctrl = ctrl;
         System.out.println("UDP: Ouvindo a porta "+porta);
-        multEnviar = new MulticastPublisher();
-        multEnviar.multicast(InetAddress.getLocalHost().getHostAddress());//Enviando o IP do Localhost
-        System.out.println(InetAddress.getLocalHost().getHostAddress());
-        multReceber = new MulticastReceiver(ctrl);//Adicionando nova borda à lista
-        multReceber.run();
+        //multEnviar = new MulticastPublisher();
+        //mast(InetAddress.getLocalHost().getHostAddress());//Enviando o IP do Localhost
+        //System.out.println(InetAddress.getLocalHost().getHostAddress());
+        //multReceber = new ultEnviar.multicMulticastReceiver(ctrl);//Adicionando nova borda à lista
+        //multReceber.run();        
         new Thread(this).start();//Criando e iniciando a thread principal
     }
 

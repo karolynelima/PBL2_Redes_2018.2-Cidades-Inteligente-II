@@ -26,28 +26,12 @@ public class Controller {
     public Controller(){
         caminhoes = new LinkedList<>();
         lixeirasRecolher = new LinkedList<>();
+        listaDeEspera = new LinkedList<>();
         lixeiras = new LinkedList<>();
         bordaP = new LinkedList<>();        
     }
     
-    public void addBorda(String bordas){
-        String array[] = bordas.split("%");
-        for(String a:array){//FOR EACH
-            String recebe[] = a.split(":");
-            Borda bord = new Borda(recebe[0], recebe[1], array.length+"");
-            bordaP.add(bord);
-        }
-    }
     
-    public String listarBordas(){
-        String str = "";
-        
-        for(Borda b:bordaP){
-            String aux = b.getEndereco()+":"+b.getPorta();
-            str += aux + "%";
-        }        
-        return str;
-    }
     
     public String cadCaminhao(String ident) {
         Caminhao cam = new Caminhao(ident);
@@ -71,36 +55,31 @@ public class Controller {
         Caminhao cam = pesquisarCaminhao(ident);
         cam.setRota(aux);
         return aux;
-    }
+    }        
     
     public Caminhao pesquisarCaminhao(String idcam){
         Caminhao caminhao = null;
-        for(int i=0;i<=caminhoes.size();i++){
-            if(caminhoes.get(i).getIdCaminhao().equals(idcam)){
-                caminhao = caminhoes.get(i);
+        for (Caminhao c:caminhoes){
+            if(c.getIdCaminhao().equals(idcam)){
+                caminhao = c;
             }
         }
+//        for(int i=0;i<=caminhoes.size();i++){
+//            if(caminhoes.get(i).getIdCaminhao().equals(idcam)){
+//                caminhao = caminhoes.get(i);
+//            }
+//        }
         return caminhao;        
     }
     
-    public Caminhao pesquisarCaminhaoEspera(String idcam){
-        Caminhao caminhao = null;
-        for(int i=0;i<=listaDeEspera.size();i++){
-            if(listaDeEspera.get(i).getIdCaminhao().equals(idcam)){
-                caminhao = listaDeEspera.get(i);
-            }
-        }
-        return caminhao;        
-    } 
+   
     public String rotaFinalizada(String ident){
         Caminhao cam = pesquisarCaminhao(ident);
         cam.setRota(" ");
         return cam.getRota();
     }    
     
-    public String getCaminhaoEspera(String id){
-        return listaDeEspera.get(listaDeEspera.indexOf(new Caminhao(id))).toString();
-    }
+    
     
     public void lixeirasRecolher(){
         for(int i=0;i<=lixeiras.size();i++){
@@ -125,24 +104,7 @@ public class Controller {
             }
         }
         return lixeira;        
-    }
-    
-    public String caminhaoQuebrar(String ident){
-        Caminhao cam = pesquisarCaminhao(ident);
-        listaDeEspera.add(cam);
-        caminhoes.remove(cam);
-        
-        return cam.getIdCaminhao();
-    }
-    
-    //Adiciona há lista ou 
-    public String caminhaoConcertar(String ident){
-        Caminhao cam = pesquisarCaminhaoEspera(ident);
-        caminhoes.add(cam);
-        listaDeEspera.remove(cam);
-        
-        return cam.getIdCaminhao();
-    }
+    }  
     
     public String cadLixeira(String ident, double vl, double capac){
         Lixeira lixeira = new Lixeira(ident, capac, vl);
@@ -168,5 +130,81 @@ public class Controller {
             }
         }
         return null;
+    }   
+    
+    // ----------------------------------------------------------------------------------//
+    
+    public void addBorda(String bordas){
+        String array[] = bordas.split("%");
+        for(String a:array){//FOR EACH
+            String recebe[] = a.split(":");
+            Borda bord = new Borda(recebe[0], recebe[1], array.length+"");
+            
+            bordaP.add(bord);
+        }
     }
+    
+    public String listarBordas(){
+        String str = "";
+        
+        for(Borda b:bordaP){
+            String aux = b.getEndereco()+":"+b.getPorta();
+            str += aux + "%";
+        }        
+        return str;
+    }
+    
+    public String getCaminhaoEspera(String id){
+        return listaDeEspera.get(listaDeEspera.indexOf(new Caminhao(id))).toString();
+    }
+    
+    public Caminhao pesquisarCaminhaoEspera(String idcam){
+        Caminhao caminhao = null;
+        for (Caminhao c:listaDeEspera){
+            if(c.getIdCaminhao().equals(idcam)){
+                caminhao = c;
+            }
+        }
+//        for(int i=0;i<=listaDeEspera.size();i++){
+//            if(listaDeEspera.get(i).getIdCaminhao().equals(idcam)){
+//                caminhao = listaDeEspera.get(i);
+//            }
+//        }
+        return caminhao;        
+    }    
+    
+    public String caminhaoQuebrar(String ident){
+        Caminhao cam = pesquisarCaminhao(ident);
+        listaDeEspera.add(cam);
+        caminhoes.remove(cam);
+        
+        return cam.getIdCaminhao();
+    }    
+    
+    public String caminhaoConcertar(String ident){
+        Caminhao cam = pesquisarCaminhaoEspera(ident);
+        caminhoes.add(cam);
+        listaDeEspera.remove(cam);
+        
+        return cam.getIdCaminhao();
+    }
+    
+    public String rotaExtrangeira(){
+        lixeirasRecolher(); //Atualiza a lista de lixeiras prontas para coleta
+        int i=0;
+        String aux = ""; 
+        while(i != 3 ){
+            aux += lixeirasRecolher.get(0).getIdLixeira() + ":";
+            lixeirasRecolher.remove(0);
+            i++;
+        }
+        return aux;
+    }
+    
+    //Método que retorna para o MulticastReceiver se há ou não caminhões no servidor
+    public boolean temCam(){ 
+        return !caminhoes.isEmpty();
+    } 
+    
+    
 }

@@ -26,10 +26,12 @@ public class ConnectionCaminhao {
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    private String adress = "127.0.0.1";
-    private int porta = 1234;
+    private String adress;
+    private int porta;
        
-    public ConnectionCaminhao() throws IOException {
+    public ConnectionCaminhao(String adress, String port) throws IOException {
+        this.adress = adress;
+        this.porta = Integer.parseInt(port);
         socket = new Socket (adress,porta);
     }       
     
@@ -87,21 +89,34 @@ public class ConnectionCaminhao {
     //MÉTODOS ADICIONADOS PARA O SEGUNDO PROBLEMA
     
     //Protocolo definido para identificar um caminhão que quebrou
-    public String quebrar(String ident) throws IOException, ClassNotFoundException{
+    public void quebrar(String ident) throws IOException, ClassNotFoundException{
+        socket = new Socket(adress, porta);
         out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
         out.writeObject("C%QUEBROU%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
+        //in = new ObjectInputStream(socket.getInputStream());     
+        
+        //return (String)in.readObject();
+    }
+    
+    //Protocolo definido para identificar caminão que foi concertado
+    public void concertar(String ident) throws IOException, ClassNotFoundException{
+        socket = new Socket(adress, porta);
+        out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
+        out.writeObject("C%CONCERTADO%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
+//        in = new ObjectInputStream(socket.getInputStream());     
+//        
+//        return (String)in.readObject();
+    }
+    
+    
+    public String identificar(String ident) throws IOException, ClassNotFoundException{
+        out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
+        out.writeObject("C%IDENTIFICAR%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
         in = new ObjectInputStream(socket.getInputStream());     
         
         return (String)in.readObject();
     }
     
-    //Protocolo definido para identificar caminão que foi concertado
-    public String concertar(String ident) throws IOException, ClassNotFoundException{
-        out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
-        out.writeObject("C%CONSERTADO%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
-        in = new ObjectInputStream(socket.getInputStream());     
-        
-        return (String)in.readObject();
-    }
+
     
 }

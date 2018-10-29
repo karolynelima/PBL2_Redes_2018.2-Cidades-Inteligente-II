@@ -6,6 +6,7 @@
 package br.com.SC.connection;
 
 import br.com.SC.controller.Controller;
+import br.com.SC.model.Borda;
 import br.com.SC.model.Lixeira;
 import com.sun.corba.se.impl.io.IIOPInputStream;
 import java.io.IOException;
@@ -13,7 +14,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +35,9 @@ public class AtividadeServidor extends Thread{
     private String mensagem;
     private DatagramPacket entradaUDP;
     private byte[] saidaUDP;
+    private MulticastPublisher multEnviar; 
+    private MulticastReceiver multReceber;
+    private String IP;
     
     public AtividadeServidor(Socket cliente, Controller control) throws IOException, ClassNotFoundException   {
         clienteTCP = cliente;//Recebe a conexão          
@@ -40,9 +46,13 @@ public class AtividadeServidor extends Thread{
         System.out.println("Cliente TCP: "+clienteTCP.getInetAddress()+":"+clienteTCP.getPort());
         mensagem = (String) entradaTCP.readObject();  
         System.out.println(mensagem);
+        
+        IP = InetAddress.getLocalHost().getHostAddress();        
+        multEnviar = new MulticastPublisher();
+        multReceber = new MulticastReceiver(control);
     }
 
-    AtividadeServidor(DatagramSocket client, DatagramPacket p, Controller control) {
+    AtividadeServidor(DatagramSocket client, DatagramPacket p, Controller control) throws UnknownHostException {
         clienteUDP = client;
         this.control = control;
         this.entradaUDP = p;
@@ -51,6 +61,10 @@ public class AtividadeServidor extends Thread{
         System.out.println("Cliente UDP: "+entradaUDP.getAddress()+":"+entradaUDP.getPort());
         mensagem = new String(entradaUDP.getData(),0,entradaUDP.getLength());//Transforma o objeto passado em String
         System.out.println("Recebido: "+mensagem);
+        
+        IP = InetAddress.getLocalHost().getHostAddress();        
+        multEnviar = new MulticastPublisher();
+        multReceber = new MulticastReceiver(control);
     }
     
     
@@ -78,10 +92,10 @@ public class AtividadeServidor extends Thread{
                             rotaFinalizada(array[3]);
                             break;
                         case "QUEBROU":
-                            caminhaoQuebrar(array[1]);
+                            caminhaoQuebrar(array[2]);
                             break;
                         case "CONCERTADO":
-                            caminhaoConcertar(array[1]);
+                            caminhaoConcertar(array[2]);
                             break;    
                             
                     }break;
@@ -151,11 +165,14 @@ public class AtividadeServidor extends Thread{
     
     private void caminhaoConcertar(String ident){
         control.caminhaoConcertar(ident);
-        System.out.println("Caminhao" + ident + "concertado");
+        System.out.println("Caminhao " + ident + " concertado");
     }
     
-    private void caminhaoQuebrar(String ident){
+    private void caminhaoQuebrar(String ident ) throws UnknownHostException, IOException{
         control.caminhaoQuebrar(ident);
-        System.out.println("Caminhao" + ident + "quebrou");
+        System.out.println("Caminhao " + ident + " quebrou");         
+       
+        multEnviar.multicast("B%SOCORRO%" + IP);//Enviando o IP do Localhost
+                
     }
 }
