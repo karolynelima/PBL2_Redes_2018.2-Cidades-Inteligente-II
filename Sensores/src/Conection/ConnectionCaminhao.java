@@ -58,8 +58,8 @@ public class ConnectionCaminhao {
         out = new ObjectOutputStream(socket.getOutputStream());
         out.writeObject("C%SOLICITANDO%ROTA%" + ident + "%");
         in = new ObjectInputStream(socket.getInputStream());
-        out.close();
-        in.close();
+//        out.close();
+//        in.close();
         
         return (String)in.readObject();//RETORNA O OBJETO RECEBIDO          
     }

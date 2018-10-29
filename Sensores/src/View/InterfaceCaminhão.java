@@ -258,8 +258,9 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             String rspt = conexaoCam.solicitarRota(identificador);
-            String array[] = rspt.split("%");//IGNORANDO DIVISOR DA MENSAGEM
-            for(int i=0;i<=array.length;i++){//PERCORRENDO LIXERIAS E SALVANDO EM UM NOVO ARRAY
+            System.out.println(rspt);
+            String array[] = rspt.split(":");//IGNORANDO DIVISOR DA MENSAGEM
+            for(int i=0;i<array.length;i++){//PERCORRENDO LIXERIAS E SALVANDO EM UM NOVO ARRAY
                 lixeiras.add(array[i]);
             }  
             lbl_mprota.setText(array.toString());//SETANDO NA TELA LIXEIRAS DA ROTA

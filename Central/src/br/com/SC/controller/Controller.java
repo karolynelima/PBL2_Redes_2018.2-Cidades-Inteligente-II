@@ -44,14 +44,15 @@ public class Controller {
     }
     
     public String solicitarRota(String ident){
-        lixeirasRecolher(); //Atualiza a lista de lixeiras prontas para coleta
-        int i=0;
-        String aux = ""; 
-        while(i != 3 ){
-            aux += lixeirasRecolher.get(0).getIdLixeira() + "%";
-            lixeirasRecolher.remove(0);
-            i++;
-        }       
+//        lixeirasRecolher(); //Atualiza a lista de lixeiras prontas para coleta
+//        int i=0;
+//        
+//        while(i != 3 && !lixeirasRecolher.isEmpty()){
+//            aux += lixeirasRecolher.get(0).getIdLixeira() + "%";
+//            lixeirasRecolher.remove(0);
+//            i++;
+//        }   
+        String aux = rotaExtrangeira();     
         Caminhao cam = pesquisarCaminhao(ident);
         cam.setRota(aux);
         return aux;
@@ -82,7 +83,7 @@ public class Controller {
     
     
     public void lixeirasRecolher(){
-        for(int i=0;i<=lixeiras.size();i++){
+        for(int i=0;i<lixeiras.size();i++){
             if(lixeiras.get(i).getVlmLixeira() >= 10 && lixeiras.get(i).getVlmLixeira() <= 100 ){
                 lixeirasRecolher.add(lixeiras.get(i));  
             }
@@ -193,7 +194,7 @@ public class Controller {
         lixeirasRecolher(); //Atualiza a lista de lixeiras prontas para coleta
         int i=0;
         String aux = ""; 
-        while(i != 3 ){
+        while(i != 3 && !lixeirasRecolher.isEmpty()){
             aux += lixeirasRecolher.get(0).getIdLixeira() + ":";
             lixeirasRecolher.remove(0);
             i++;
