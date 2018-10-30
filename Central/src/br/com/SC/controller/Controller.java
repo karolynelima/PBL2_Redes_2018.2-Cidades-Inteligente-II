@@ -83,11 +83,19 @@ public class Controller {
     
     
     public void lixeirasRecolher(){
-        for(int i=0;i<lixeiras.size();i++){
-            if(lixeiras.get(i).getVlmLixeira() >= 10 && lixeiras.get(i).getVlmLixeira() <= 100 ){
-                lixeirasRecolher.add(lixeiras.get(i));  
+        for(Lixeira l:lixeiras){
+            if(l.getVlmLixeira() >= 10 && l.getVlmLixeira() <=100){
+                lixeirasRecolher.add(l);
             }
-        }        
+        }
+        
+        
+        
+//        for(int i=0;i<lixeiras.size();i++){
+//            if(lixeiras.get(i).getVlmLixeira() >= 10 && lixeiras.get(i).getVlmLixeira() <= 100 ){
+//                lixeirasRecolher.add(lixeiras.get(i));  
+//            }
+//        }        
     }
     
     public String lixeiraColetada(String lixeiras){        
@@ -99,11 +107,18 @@ public class Controller {
     
     public Lixeira pesquisarLixeira(String idlix){
         Lixeira lixeira = null;
-        for(int i=0;i<=lixeiras.size();i++){
-            if(lixeiras.get(i).getIdLixeira().equals(idlix)){
-                lixeira = lixeiras.get(i);
+        for(Lixeira l:lixeiras){
+            if(l.getIdLixeira().equals(idlix)){
+                lixeira = l;
             }
         }
+        
+        
+//        for(int i=0;i<=lixeiras.size();i++){
+//            if(lixeiras.get(i).getIdLixeira().equals(idlix)){
+//                lixeira = lixeiras.get(i);
+//            }
+//        }
         return lixeira;        
     }  
     
