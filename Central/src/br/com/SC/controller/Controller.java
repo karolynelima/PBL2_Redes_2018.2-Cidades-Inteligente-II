@@ -5,10 +5,8 @@
  */
 package br.com.SC.controller;
 
-import br.com.SC.model.Borda;
 import br.com.SC.model.Caminhao;
 import br.com.SC.model.Lixeira;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -21,14 +19,14 @@ public class Controller {
     private LinkedList<Caminhao> listaDeEspera;
     private LinkedList<Lixeira> lixeirasRecolher;
     private LinkedList<Lixeira> lixeiras;
-    private LinkedList<Borda> bordaP;
+    //private LinkedList<Borda> bordaP;
 
     public Controller(){
         caminhoes = new LinkedList<>();
         lixeirasRecolher = new LinkedList<>();
         listaDeEspera = new LinkedList<>();
         lixeiras = new LinkedList<>();
-        bordaP = new LinkedList<>();        
+        //bordaP = new LinkedList<>();        
     }
     
     
@@ -52,7 +50,7 @@ public class Controller {
 //            lixeirasRecolher.remove(0);
 //            i++;
 //        }   
-        String aux = rotaExtrangeira();     
+        String aux = gerarRota();     
         Caminhao cam = pesquisarCaminhao(ident);
         cam.setRota(aux);
         return aux;
@@ -110,6 +108,7 @@ public class Controller {
         for(Lixeira l:lixeiras){
             if(l.getIdLixeira().equals(idlix)){
                 lixeira = l;
+                return lixeira;
             }
         }    
         
@@ -118,7 +117,7 @@ public class Controller {
 //                lixeira = lixeiras.get(i);
 //            }
 //        }
-        return lixeira;        
+        return null;        
     }  
     
     public String cadLixeira(String ident, double vl, double capac){
@@ -159,7 +158,7 @@ public class Controller {
         String str[] = new String[caminhoes.size()];
         int i = 0;
         for(Caminhao c:caminhoes){            
-            str[i] = c.getIdCaminhao()+":"+c.getRota();
+            str[i] = c.getIdCaminhao()+"->"+c.getRota();
             i++;
         }
         return str;
@@ -167,35 +166,36 @@ public class Controller {
     
     // ----------------------------------------------------------------------------------//
     
-    public void addBorda(String bordas){
-        String array[] = bordas.split("%");
-        for(String a:array){//FOR EACH
-            String recebe[] = a.split(":");
-            Borda bord = new Borda(recebe[0], recebe[1], array.length+"");
-            
-            bordaP.add(bord);
-        }
-    }
+//    public void addBorda(String bordas){
+//        String array[] = bordas.split("%");
+//        for(String a:array){//FOR EACH
+//            String recebe[] = a.split(":");
+//            Borda bord = new Borda(recebe[0], recebe[1], array.length+"");
+//            
+//            bordaP.add(bord);
+//        }
+//    }
+//    
+//    public String listarBordas(){
+//        String str = "";
+//        
+//        for(Borda b:bordaP){
+//            String aux = b.getEndereco()+":"+b.getPorta();
+//            str += aux + "%";
+//        }        
+//        return str;
+//    }
     
-    public String listarBordas(){
-        String str = "";
-        
-        for(Borda b:bordaP){
-            String aux = b.getEndereco()+":"+b.getPorta();
-            str += aux + "%";
-        }        
-        return str;
-    }
-    
-    public String getCaminhaoEspera(String id){
-        return listaDeEspera.get(listaDeEspera.indexOf(new Caminhao(id))).toString();
-    }
+//    public String getCaminhaoEspera(String id){
+//        return listaDeEspera.get(listaDeEspera.indexOf(new Caminhao(id))).toString();
+//    }
     
     public Caminhao pesquisarCaminhaoEspera(String idcam){
-        Caminhao caminhao = null;
+        Caminhao caminhao;
         for (Caminhao c:listaDeEspera){
             if(c.getIdCaminhao().equals(idcam)){
                 caminhao = c;
+                return caminhao;
             }
         }
 //        for(int i=0;i<=listaDeEspera.size();i++){
@@ -203,7 +203,7 @@ public class Controller {
 //                caminhao = listaDeEspera.get(i);
 //            }
 //        }
-        return caminhao;        
+        return null;        
     }    
     
     public String caminhaoQuebrar(String ident){
@@ -222,7 +222,7 @@ public class Controller {
         return cam.getIdCaminhao();
     }
     
-    public String rotaExtrangeira(){
+    public String gerarRota(){
         lixeirasRecolher(); //Atualiza a lista de lixeiras prontas para coleta
         int i=0;
         String aux = ""; 

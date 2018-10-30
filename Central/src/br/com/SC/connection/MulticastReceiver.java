@@ -85,7 +85,7 @@ public class MulticastReceiver extends Thread {
                     case "CONFIRMA":
                         Socket socket = new Socket(array[2],Integer.parseInt(array[3]));
                         out = new ObjectOutputStream(socket.getOutputStream());
-                        out.writeObject("B%CRIANDO%CONEXÃO%TCP" + control.rotaExtrangeira() + "%" );               
+                        out.writeObject("B%CRIANDO%CONEXÃO%TCP" + control.gerarRota() + "%" );               
                         break;
                 }
         }        

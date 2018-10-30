@@ -36,6 +36,7 @@ public class InicioServer extends javax.swing.JFrame {
     
     public InicioServer() {
         initComponents();
+        init();
     }
 
     /**
