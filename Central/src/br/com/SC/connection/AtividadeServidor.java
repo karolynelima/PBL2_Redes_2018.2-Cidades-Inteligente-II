@@ -94,8 +94,8 @@ public class AtividadeServidor extends Thread{
                         case "QUEBROU":
                             caminhaoQuebrar(array[2]);
                             break;
-                        case "CONCERTADO":
-                            caminhaoConcertar(array[2]);
+                        case "CONSERTADO":
+                            caminhaoConsertar(array[2]);
                             break;    
                             
                     }break;
@@ -163,9 +163,9 @@ public class AtividadeServidor extends Thread{
         control.capacidadeAtual(ident, Double.parseDouble(vl));
     }
     
-    private void caminhaoConcertar(String ident){
-        control.caminhaoConcertar(ident);
-        System.out.println("Caminhao " + ident + " concertado");
+    private void caminhaoConsertar(String ident){
+        control.caminhaoConsertar(ident);
+        System.out.println("Caminhao " + ident + " consertado");
     }
     
     private void caminhaoQuebrar(String ident ) throws UnknownHostException, IOException{

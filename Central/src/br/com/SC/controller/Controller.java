@@ -196,7 +196,7 @@ public class Controller {
         return cam.getIdCaminhao();
     }    
     
-    public String caminhaoConcertar(String ident){
+    public String caminhaoConsertar(String ident){
         Caminhao cam = pesquisarCaminhaoEspera(ident);
         caminhoes.add(cam);
         listaDeEspera.remove(cam);
