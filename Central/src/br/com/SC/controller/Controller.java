@@ -111,8 +111,7 @@ public class Controller {
             if(l.getIdLixeira().equals(idlix)){
                 lixeira = l;
             }
-        }
-        
+        }    
         
 //        for(int i=0;i<=lixeiras.size();i++){
 //            if(lixeiras.get(i).getIdLixeira().equals(idlix)){
