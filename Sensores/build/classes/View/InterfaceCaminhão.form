@@ -60,7 +60,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -76,9 +75,10 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lbl_lAtual" alignment="0" pref="196" max="32767" attributes="0"/>
                                   <Component id="lbl_lProx" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lbl_mprota" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_mprota" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jLabel1" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -137,7 +137,7 @@
               <Component id="jb_coletada" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Component id="jb_finali" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="jb_quebrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jb_concertar" min="-2" max="-2" attributes="0"/>

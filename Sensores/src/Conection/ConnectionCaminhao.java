@@ -47,10 +47,12 @@ public class ConnectionCaminhao {
         socket = new Socket(adress, porta);
         out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
         out.writeObject("C%CADASTRO%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
-        in = new ObjectInputStream(socket.getInputStream());        
-//        out.close();
-//        in.close();
-        return (String)in.readObject();
+        in = new ObjectInputStream(socket.getInputStream());
+        String resp = (String)in.readObject();
+        out.close();
+        in.close();
+        
+        return resp;//RETORNA O OBJETO RECEBIDO   
     }
     
     public String solicitarRota(String ident) throws IOException, ClassNotFoundException{
@@ -58,10 +60,11 @@ public class ConnectionCaminhao {
         out = new ObjectOutputStream(socket.getOutputStream());
         out.writeObject("C%SOLICITANDO%ROTA%" + ident + "%");
         in = new ObjectInputStream(socket.getInputStream());
-//        out.close();
-//        in.close();
+        String resp = (String)in.readObject();
+        out.close();
+        in.close();
         
-        return (String)in.readObject();//RETORNA O OBJETO RECEBIDO          
+        return resp;//RETORNA O OBJETO RECEBIDO          
     }
     
     public String lixeiraColetada(String lixeiras) throws IOException, ClassNotFoundException{
@@ -69,10 +72,11 @@ public class ConnectionCaminhao {
         out = new ObjectOutputStream(socket.getOutputStream());
         out.writeObject("C%RECOLHEU%LIXEIRA%" + lixeiras + "%" );
         in = new ObjectInputStream(socket.getInputStream());
+        String resp = (String)in.readObject();
         out.close();
         in.close();
         
-        return (String)in.readObject();
+        return resp;//RETORNA O OBJETO RECEBIDO   
     }
     
     public String rotaFinalizada(String ident) throws IOException, ClassNotFoundException{
@@ -80,10 +84,11 @@ public class ConnectionCaminhao {
         out = new ObjectOutputStream(socket.getOutputStream());
         out.writeObject("C%ROTA%FINALIZADA%" + ident + "%");
         in = new ObjectInputStream(socket.getInputStream());
+        String resp = (String)in.readObject();
         out.close();
         in.close();
         
-        return (String)in.readObject();        
+        return resp;//RETORNA O OBJETO RECEBIDO   
     }
     
     //MÉTODOS ADICIONADOS PARA O SEGUNDO PROBLEMA
@@ -112,9 +117,12 @@ public class ConnectionCaminhao {
     public String identificar(String ident) throws IOException, ClassNotFoundException{
         out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
         out.writeObject("C%IDENTIFICAR%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
-        in = new ObjectInputStream(socket.getInputStream());     
+        in = new ObjectInputStream(socket.getInputStream());
+        String resp = (String)in.readObject();
+        out.close();
+        in.close();
         
-        return (String)in.readObject();
+        return resp;//RETORNA O OBJETO RECEBIDO   
     }
     
 

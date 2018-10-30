@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/kkaro/Documents/GitHub/Cidades-Inteligente-II/Sensores/src/View/InterfaceLixeira.java</file>
+            <file>file:/C:/Users/kkaro/Documents/GitHub/Cidades-Inteligente-II/Sensores/src/View/InterfaceCaminhão.java</file>
+            <file>file:/C:/Users/kkaro/Documents/GitHub/Cidades-Inteligente-II/Sensores/src/Conection/ConnectionLixeira.java</file>
+            <file>file:/C:/Users/kkaro/Documents/GitHub/Cidades-Inteligente-II/Sensores/src/Conection/ConnectionCaminhao.java</file>
+        </group>
     </open-files>
 </project-private>

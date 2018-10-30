@@ -172,7 +172,6 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel3)
@@ -187,7 +186,8 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbl_lAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                                     .addComponent(lbl_lProx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_mprota))))
+                                    .addComponent(lbl_mprota, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +232,7 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
                 .addComponent(jb_coletada)
                 .addGap(7, 7, 7)
                 .addComponent(jb_finali)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(44, 44, 44)
                 .addComponent(jb_quebrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jb_concertar)
@@ -263,7 +263,7 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
                 lixeiras.add(array[i]);
                 join+=array[i]+"-";
             }  
-            lbl_mprota.setText(array.toString());//SETANDO NA TELA LIXEIRAS DA ROTA
+            lbl_mprota.setText(join);//SETANDO NA TELA LIXEIRAS DA ROTA
             atualizarRota();
             
         } catch (IOException | ClassNotFoundException ex) {
@@ -305,10 +305,13 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
 
     private void jb_coletadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_coletadaActionPerformed
         try {
-            // TODO add your handling code here:
-            String respt = conexaoCam.lixeiraColetada(lixeiras.get(0));
-            lixeiras.remove(0);
-            atualizarRota();
+            if(!lixeiras.isEmpty()){
+                conexaoCam.lixeiraColetada(lixeiras.get(0));
+                lixeiras.remove(0);
+                atualizarRota();
+            }else{
+                JOptionPane.showMessageDialog(null, "Não há lixiera a ser coletada!");
+            }
                     
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(InterfaceCaminhão.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,11 +321,11 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
     private void jb_finaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_finaliActionPerformed
         try {
             // TODO add your handling code here:
-            String respt = conexaoCam.rotaFinalizada(identificador);
+            conexaoCam.rotaFinalizada(identificador);
             
-            lbl_mprota.setText("");
-            lbl_lAtual.setText("");
-            lbl_lProx.setText("");            
+            lbl_mprota.setText(" ");
+            lbl_lAtual.setText(" ");
+            lbl_lProx.setText(" ");            
             
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(InterfaceCaminhão.class.getName()).log(Level.SEVERE, null, ex);

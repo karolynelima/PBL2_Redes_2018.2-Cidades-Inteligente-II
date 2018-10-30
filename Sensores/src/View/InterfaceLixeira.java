@@ -25,7 +25,7 @@ public class InterfaceLixeira extends javax.swing.JFrame {
      */
     public InterfaceLixeira() {
         initComponents();
-        conexao();
+        //conexao();
     }
 
     /**
@@ -50,6 +50,7 @@ public class InterfaceLixeira extends javax.swing.JFrame {
         txtIpServer = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtPorta = new javax.swing.JTextPane();
+        jbConect = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +98,13 @@ public class InterfaceLixeira extends javax.swing.JFrame {
         txtPorta.setText("1234");
         jScrollPane3.setViewportView(txtPorta);
 
+        jbConect.setText("Conectar");
+        jbConect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConectActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +131,8 @@ public class InterfaceLixeira extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jbConect, javax.swing.GroupLayout.Alignment.TRAILING))
                                     .addComponent(jb_gerar)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
@@ -158,7 +167,9 @@ public class InterfaceLixeira extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbConect)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -179,7 +190,7 @@ public class InterfaceLixeira extends javax.swing.JFrame {
     private void jb_gerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_gerarActionPerformed
         if(val <= 100){
             val += Math.random()*10;
-
+            System.out.println(val);
             lb_atual.setText(val+" L");
             try {
                 conexao.conectar();
@@ -189,6 +200,10 @@ public class InterfaceLixeira extends javax.swing.JFrame {
             }
         }    
     }//GEN-LAST:event_jb_gerarActionPerformed
+
+    private void jbConectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConectActionPerformed
+        conexao();
+    }//GEN-LAST:event_jbConectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,7 +249,7 @@ public class InterfaceLixeira extends javax.swing.JFrame {
         try {
             ident = JOptionPane.showInputDialog("DIGITE O IDENTIFICADOR:");
             lb_titulo.setText("LIXEIRA - "+ident);
-            conexao = new ConnectionLixeira();
+            conexao = new ConnectionLixeira(txtIpServer.getText(), txtPorta.getText());
             conexao.conectar();//ESTABELER A CONEXÃO
             conexao.cadLixeira(ident, 0, 100);
         } catch (IOException | ClassNotFoundException ex) {
@@ -250,6 +265,7 @@ public class InterfaceLixeira extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton jbConect;
     private javax.swing.JButton jb_esvaziar;
     private javax.swing.JButton jb_gerar;
     private javax.swing.JLabel lb_atual;

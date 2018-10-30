@@ -31,9 +31,9 @@ public class ConnectionLixeira {
         this.end = InetAddress.getByName(adress);//Pega o endereço do host de conexão
     }
    
-    public ConnectionLixeira(String adress, int porta) throws IOException {
+    public ConnectionLixeira(String adress, String porta) throws IOException {
         this.end = InetAddress.getByName(adress);//Pega o endereço do host de conexão
-        this.porta = porta;//Seta a porta numa variavel global
+        this.porta = Integer.parseInt(porta);//Seta a porta numa variavel global
         
     }
     
