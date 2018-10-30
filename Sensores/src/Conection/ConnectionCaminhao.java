@@ -99,10 +99,10 @@ public class ConnectionCaminhao {
     }
     
     //Protocolo definido para identificar caminão que foi concertado
-    public void concertar(String ident) throws IOException, ClassNotFoundException{
+    public void consertar(String ident) throws IOException, ClassNotFoundException{
         socket = new Socket(adress, porta);
         out = new ObjectOutputStream(socket.getOutputStream()); // CRIAMOS OUTPUTSTREAM USANDO O MÉTODO DO SOCKET PARA ENVIAR DADOS
-        out.writeObject("C%CONCERTADO%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
+        out.writeObject("C%CONSERTADO%" + ident + "%"); //ESCREVEMOS OS DADOS NO OUTPUTSTREAM (ISSO BASTA PARA TRANSMITIR)        
 //        in = new ObjectInputStream(socket.getInputStream());     
 //        
 //        return (String)in.readObject();

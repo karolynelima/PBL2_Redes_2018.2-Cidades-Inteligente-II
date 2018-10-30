@@ -125,7 +125,7 @@ public class Controller {
         Lixeira lixeira = new Lixeira(ident, capac, vl);
         lixeiras.add(lixeira);
         System.out.println("Lixeira cadastrada");
-        return "CADASTRO LIXEIRA";
+        return "Lixeira cadastrada";
     }
     
     public void capacidadeTotal(String ident, double capac){
@@ -139,13 +139,31 @@ public class Controller {
     }
     
     public Lixeira getLixeira(String ident){
-        for(int i=0;i<=lixeiras.size();i++){
-            if(lixeiras.get(i).getIdLixeira().equals(ident)){
-                return lixeiras.get(i);
+        Lixeira lixeira = null;
+        for(Lixeira l:lixeiras){
+            if(l.getIdLixeira().equals(ident)){
+                lixeira = l;
+                return lixeira;
             }
         }
+        
+//        for(int i=0;i<=lixeiras.size();i++){
+//            if(lixeiras.get(i).getIdLixeira().equals(ident)){
+//                return lixeiras.get(i);
+//            }
+//        }
         return null;
     }   
+    
+    public String[] getRotas(){
+        String str[] = new String[caminhoes.size()];
+        int i = 0;
+        for(Caminhao c:caminhoes){            
+            str[i] = c.getIdCaminhao()+":"+c.getRota();
+            i++;
+        }
+        return str;
+    }
     
     // ----------------------------------------------------------------------------------//
     

@@ -103,7 +103,7 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
             }
         });
 
-        jb_coletada.setText("LIXEIRA TAL COLETADA");
+        jb_coletada.setText("LIXEIRA ATUAL COLETADA");
         jb_coletada.setEnabled(false);
         jb_coletada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,20 +170,12 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 24, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_lAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_lProx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_mprota))
-                        .addGap(109, 109, 109))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jb_coletada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -192,17 +184,21 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
                                     .addComponent(jb_concertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jb_solic, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(35, 35, 35)
-                                .addComponent(jb_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbl_lAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(lbl_lProx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbl_mprota))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbConectar)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbConectar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jb_cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))))
                         .addGap(52, 52, 52))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(132, 132, 132)
@@ -215,17 +211,19 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbl_mprota, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(lbl_lAtual))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(lbl_lProx))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_mprota, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_lAtual)
+                        .addGap(13, 13, 13)
+                        .addComponent(lbl_lProx))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_solic)
@@ -260,8 +258,10 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
             String rspt = conexaoCam.solicitarRota(identificador);
             System.out.println(rspt);
             String array[] = rspt.split(":");//IGNORANDO DIVISOR DA MENSAGEM
+            String join = "";
             for(int i=0;i<array.length;i++){//PERCORRENDO LIXERIAS E SALVANDO EM UM NOVO ARRAY
                 lixeiras.add(array[i]);
+                join+=array[i]+"-";
             }  
             lbl_mprota.setText(array.toString());//SETANDO NA TELA LIXEIRAS DA ROTA
             atualizarRota();
@@ -272,13 +272,22 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_solicActionPerformed
     
     private void atualizarRota(){
-        lbl_lAtual.setText(lixeiras.get(0));//SETANDO LIXEIRA ATUAL
-        lbl_lProx.setText(lixeiras.get(1));//SETANDO PRÓXIMA LIXEIRA A SER RECOLHIDA
+        if (lixeiras.isEmpty()) {
+            lbl_lAtual.setText("");
+            lbl_lProx.setText("");
+        } else {
+            lbl_lAtual.setText(lixeiras.get(0));//SETANDO LIXEIRA ATUAL
+            if (lixeiras.size() > 1)
+                lbl_lProx.setText(lixeiras.get(1));//SETANDO PRÓXIMA LIXEIRA A SER RECOLHIDA
+            else
+                lbl_lProx.setText("");
+        }    
     }
     
     private void jb_cadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_cadastroActionPerformed
         identificador = JOptionPane.showInputDialog("Defina o Identificador do caminhão:");
         System.out.println(identificador);
+        jLabel4.setText(identificador);
         
         try {
             String resp = conexaoCam.cadCaminhao(identificador);
@@ -335,7 +344,7 @@ public class InterfaceCaminhão extends javax.swing.JFrame {
     private void jb_concertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_concertarActionPerformed
         try {
             // TODO add your handling code here:
-            conexaoCam.concertar(identificador);
+            conexaoCam.consertar(identificador);
             
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(InterfaceCaminhão.class.getName()).log(Level.SEVERE, null, ex);

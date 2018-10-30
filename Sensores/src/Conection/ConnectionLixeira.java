@@ -24,7 +24,7 @@ public class ConnectionLixeira {
     private final byte[] entradaUDP = new byte[1024]; //Objeto que recebe informação do servidor
     private InetAddress end;
     
-    private String adress = "127.0.0.1";
+    private String adress = "127.0.0.1" ;
     private int porta = 1234;
 
     public ConnectionLixeira() throws UnknownHostException {
